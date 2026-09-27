@@ -20,7 +20,7 @@ maintainer:          palkovsky.ondrej@gmail.com
 category:            Text, JSON
 build-type:          Simple
 cabal-version:       >=1.10
-extra-source-files:  c_lib/lexer.h, changelog.md, benchmarks/json-data/*.json, README.md
+extra-source-files:  c_lib/lexer.h, changelog.md, benchmarks/json-data/*.json, README.md, test/stock/lexer_537a43a7.c
 
 source-repository head
   type: git
@@ -92,12 +92,14 @@ test-suite spec
   main-is:             Spec.hs
   other-modules:         Data.JsonStream.CLexType
                        , Data.JsonStream.Unescape
+                       , DifferentialSpec
                        , ParserSpec
+                       , StockCLexer
                        , UnescapeSpec
                        , Data.JsonStream.CLexer
                        , Data.JsonStream.Parser
                        , Data.JsonStream.TokenParser
-  c-sources:           c_lib/lexer.c, c_lib/unescape_string.c
+  c-sources:           c_lib/lexer.c, c_lib/unescape_string.c, test/stock/stock_lexer.c
   include-dirs:        c_lib
   includes:            c_lib/lexer.h
   type:                exitcode-stdio-1.0
